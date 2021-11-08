@@ -1,7 +1,6 @@
 import React, {
   FunctionComponent,
   MouseEventHandler,
-  SyntheticEvent,
   useEffect,
   useRef,
 } from "react";
@@ -19,7 +18,7 @@ const Canvas: FunctionComponent<CanvasProps> = ({
   height,
   width,
   handleCanvasMouse,
-}: CanvasProps) => {
+}) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
