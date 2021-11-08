@@ -1,16 +1,24 @@
-import React, { FunctionComponent, useEffect, useRef } from "react";
+import React, {
+  FunctionComponent,
+  MouseEventHandler,
+  SyntheticEvent,
+  useEffect,
+  useRef,
+} from "react";
 import "../styles/Canvas.css";
 
 interface CanvasProps {
   draw: (canvas: CanvasRenderingContext2D) => void;
   height: number;
   width: number;
+  handleCanvasMouse: MouseEventHandler<HTMLCanvasElement>;
 }
 
 const Canvas: FunctionComponent<CanvasProps> = ({
   draw,
   height,
   width,
+  handleCanvasMouse,
 }: CanvasProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -21,7 +29,15 @@ const Canvas: FunctionComponent<CanvasProps> = ({
     }
   }, [draw]);
 
-  return <canvas ref={canvasRef} width={width} height={height}></canvas>;
+  return (
+    <canvas
+      ref={canvasRef}
+      width={width}
+      height={height}
+      onMouseDown={handleCanvasMouse}
+      onMouseMove={handleCanvasMouse}
+      onMouseUp={handleCanvasMouse}></canvas>
+  );
 };
 
 export default Canvas;
