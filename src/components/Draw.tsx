@@ -1,9 +1,24 @@
+<<<<<<< HEAD
 import React, { MouseEventHandler, useState } from "react";
+=======
+import React, {
+  ChangeEventHandler,
+  FunctionComponent,
+  MouseEventHandler,
+  useState,
+} from "react";
+>>>>>>> 84dc1773f86dfcdcf0c595a87d34e42cf3bd5ffa
 import Canvas from "./Canvas";
 import Palette from "./Palette";
+import RangeInput from "./RangeInput";
 
+<<<<<<< HEAD
 const Draw = () => {
   const [canvasSize, setCanvasSize] = useState({ width: 500, height: 500 });
+=======
+const Draw: FunctionComponent = () => {
+  const [canvasSize, setCanvasSize] = useState({ width: 100, height: 1000 });
+>>>>>>> 84dc1773f86dfcdcf0c595a87d34e42cf3bd5ffa
   const [drawOn, setDrawOn] = useState(false);
   const [mouseStartCoordinates, setMouseStartCoordinates] = useState({
     x: 0,
@@ -53,6 +68,20 @@ const Draw = () => {
     console.log(e.currentTarget.name);
   };
 
+  const handleRangeInput: ChangeEventHandler<HTMLInputElement> = (e) => {
+    if (e.currentTarget.name === "width")
+      setCanvasSize((prevState) => ({
+        width: Number(e.currentTarget.value),
+        height: prevState.height,
+      }));
+
+    if (e.currentTarget.name === "height")
+      setCanvasSize((prevState) => ({
+        width: prevState.width,
+        height: Number(e.currentTarget.value),
+      }));
+  };
+
   return (
     <div>
       <Canvas
@@ -62,6 +91,24 @@ const Draw = () => {
         handleCanvasMouse={handleCanvasMouse}
       />
       <Palette handleColorOnClick={handleColorOnClick} />
+      <RangeInput
+        name="width"
+        min="30vh"
+        max="80vh"
+        step="5vh"
+        orient="hotizontal"
+        value={canvasSize.width}
+        handleRangeInput={handleRangeInput}
+      />
+      <RangeInput
+        name="height"
+        min="30vh"
+        max="80vh"
+        step="5vh"
+        orient="vertical"
+        value={canvasSize.height}
+        handleRangeInput={handleRangeInput}
+      />
     </div>
   );
 };
