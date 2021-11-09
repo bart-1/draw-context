@@ -1,10 +1,10 @@
 import React, { ChangeEventHandler } from "react";
 interface RangeInput {
-  name:string
+  name: string;
   min: string;
   max: string;
   step: string;
-  orient: string;
+  orient?: string;
   value: number;
   handleRangeInput: ChangeEventHandler<HTMLInputElement>;
 }
@@ -25,7 +25,7 @@ const RangeInput = ({
       min={min}
       max={max}
       step={step}
-      {...orient}
+      // {...orient}
       value={value}
       onChange={handleRangeInput}
     />

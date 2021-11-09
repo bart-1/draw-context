@@ -16,11 +16,11 @@ const colorsPaletteArr = [
   "violet",
 ];
 
-const Palette = ({ handleColorOnClick }:PaletteProps) => {
+const Palette = ({ handleColorOnClick }: PaletteProps) => {
   const colorsPalette = colorsPaletteArr.map((color) => (
     <button
-          key={color}
-          name={color}
+      key={color}
+      name={color}
       style={{ backgroundColor: color, width: "30px", height: "30px" }}
       onClick={handleColorOnClick}></button>
   ));

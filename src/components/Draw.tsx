@@ -6,6 +6,7 @@ import RangeInput from "./RangeInput";
 
 const Draw = () => {
   const [canvasSize, setCanvasSize] = useState({ width: 500, height: 500 });
+  const [canvasPicture, setCanvasPicture] = useState([]);
 
   const [drawOn, setDrawOn] = useState(false);
   const [mouseStartCoordinates, setMouseStartCoordinates] = useState({
@@ -34,6 +35,7 @@ const Draw = () => {
       );
       setMouseStartCoordinates(mouseMoveCoordinates);
       ctx.stroke();
+      // setCanvasPicture(prevState => prevState.concat(ctx);
     }
   };
 
@@ -59,14 +61,14 @@ const Draw = () => {
   const handleRangeInput: ChangeEventHandler<HTMLInputElement> = (e) => {
     if (e.currentTarget.name === "width")
       setCanvasSize((prevState) => ({
-        width: Number(e.currentTarget.value),
+        width: e.target.valueAsNumber,
         height: prevState.height,
       }));
 
     if (e.currentTarget.name === "height")
       setCanvasSize((prevState) => ({
         width: prevState.width,
-        height: Number(e.currentTarget.value),
+        height: e.target.valueAsNumber,
       }));
   };
 
@@ -81,19 +83,19 @@ const Draw = () => {
       <Palette handleColorOnClick={handleColorOnClick} />
       <RangeInput
         name="width"
-        min="30vh"
-        max="80vh"
-        step="5vh"
-        orient="hotizontal"
+        min="100"
+        max="800"
+        step="20"
+        // orient="hotizontal"
         value={canvasSize.width}
         handleRangeInput={handleRangeInput}
       />
       <RangeInput
         name="height"
-        min="30vh"
-        max="80vh"
-        step="5vh"
-        orient="vertical"
+        min="100"
+        max="800"
+        step="20"
+        // orient="vertical"
         value={canvasSize.height}
         handleRangeInput={handleRangeInput}
       />
