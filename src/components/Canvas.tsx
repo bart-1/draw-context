@@ -6,19 +6,19 @@ import React, {
 } from "react";
 import "../styles/Canvas.css";
 
-interface CanvasProps {
+type CanvasProps = {
   draw: (canvas: CanvasRenderingContext2D) => void;
   height: number;
   width: number;
   handleCanvasMouse: MouseEventHandler<HTMLCanvasElement>;
 }
 
-const Canvas: FunctionComponent<CanvasProps> = ({
+const Canvas= ({
   draw,
   height,
   width,
   handleCanvasMouse,
-}) => {
+}:CanvasProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {

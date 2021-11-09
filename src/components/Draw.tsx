@@ -1,8 +1,8 @@
-import React, { FunctionComponent, MouseEventHandler, useState } from "react";
+import React, { MouseEventHandler, useState } from "react";
 import Canvas from "./Canvas";
 import Palette from "./Palette";
 
-const Draw: FunctionComponent = () => {
+const Draw = () => {
   const [canvasSize, setCanvasSize] = useState({ width: 500, height: 500 });
   const [drawOn, setDrawOn] = useState(false);
   const [mouseStartCoordinates, setMouseStartCoordinates] = useState({

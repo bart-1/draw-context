@@ -16,7 +16,7 @@ const colorsPaletteArr = [
   "violet",
 ];
 
-const Palette: FunctionComponent<PaletteProps> = ({ handleColorOnClick }) => {
+const Palette = ({ handleColorOnClick }:PaletteProps) => {
   const colorsPalette = colorsPaletteArr.map((color) => (
     <button
           key={color}
