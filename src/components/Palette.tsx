@@ -1,4 +1,4 @@
-import React, { FunctionComponent, MouseEventHandler } from "react";
+import React, { MouseEventHandler } from "react";
 
 interface PaletteProps {
   handleColorOnClick: MouseEventHandler<HTMLButtonElement>;

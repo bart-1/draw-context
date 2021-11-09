@@ -1,24 +1,12 @@
-<<<<<<< HEAD
-import React, { MouseEventHandler, useState } from "react";
-=======
-import React, {
-  ChangeEventHandler,
-  FunctionComponent,
-  MouseEventHandler,
-  useState,
-} from "react";
->>>>>>> 84dc1773f86dfcdcf0c595a87d34e42cf3bd5ffa
+import React, { ChangeEventHandler, MouseEventHandler, useState } from "react";
+
 import Canvas from "./Canvas";
 import Palette from "./Palette";
 import RangeInput from "./RangeInput";
 
-<<<<<<< HEAD
 const Draw = () => {
   const [canvasSize, setCanvasSize] = useState({ width: 500, height: 500 });
-=======
-const Draw: FunctionComponent = () => {
-  const [canvasSize, setCanvasSize] = useState({ width: 100, height: 1000 });
->>>>>>> 84dc1773f86dfcdcf0c595a87d34e42cf3bd5ffa
+
   const [drawOn, setDrawOn] = useState(false);
   const [mouseStartCoordinates, setMouseStartCoordinates] = useState({
     x: 0,

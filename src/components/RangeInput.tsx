@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ChangeEventHandler } from "react";
+import React, { ChangeEventHandler } from "react";
 interface RangeInput {
   name:string
   min: string;
@@ -9,7 +9,7 @@ interface RangeInput {
   handleRangeInput: ChangeEventHandler<HTMLInputElement>;
 }
 
-const RangeInput: FunctionComponent<RangeInput> = ({
+const RangeInput = ({
   name,
   min,
   max,
