@@ -3,10 +3,10 @@ interface RangeInput {
   name: string;
   min: number;
   max: number;
-  step: string;
+  step: number;
   orient?: string;
   value: number;
-  handleRangeInput: ChangeEventHandler<HTMLInputElement>;
+  handleInput: ChangeEventHandler<HTMLInputElement>;
 }
 
 const RangeInput = ({
@@ -16,20 +16,30 @@ const RangeInput = ({
   step,
   orient,
   value,
-  handleRangeInput,
+  handleInput,
 }: RangeInput) => {
   return (
-    <input
-      name={name}
-      type="range"
-      min={min}
-      max={max}
-      orient={orient}
-      value={value}
-      step={step}
-      onChange={handleRangeInput}
-      
-    />
+    <div style={{ textAlign: "center" }}>
+      <input
+        name={name}
+        type="range"
+        min={min}
+        max={max}
+        orient={orient}
+        value={value}
+        step={step}
+        onChange={handleInput}
+        style={{}}
+      />
+      <input
+        type="number"
+        name={name}
+        step="1"
+        value={Math.round(value)}
+        onChange={handleInput}
+        style={{ width: "50px" }}
+      />
+    </div>
   );
 };
 

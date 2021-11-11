@@ -1,10 +1,54 @@
 div.draw {
   display: flex;
   flex-direction: column;
+  width: fit-content;
+  margin: auto;
 }
 
-input[name="height"] {
-  position: absolute;
-  top: 20px;
-  transform: scale(1, -1);
+input[type=range][orient=vertical]{
+  writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* WebKit */
+    width: 8px;
+    height: 175px;
+    padding: 0 5px;
+    transform: scale( 1, -1);
 }
+
+input[type=range][orient=horizontal]{
+    width: 175px;
+    height: 8px;
+    padding: 5px 0;
+}
+
+div.horizontal-flex {
+  display: flex;
+  flex-direction: row;
+}
+
+div.toolbox {
+  width: 100vw;
+  border-radius: 15px 15px 0 0;
+  position: fixed;
+  bottom: 0;
+  height: 20px;
+  background-color: indigo;
+}
+
+div.toolbox:hover {
+  position: absolute;
+  height: fit-content;
+}
+
+
+div.thickness {
+  margin: auto;
+  width: fit-content;
+  height: fit-content;
+  align-items: center;
+}
+div.palette {
+  width: 80%;
+  margin: 20px auto;
+  height: fit-content;
+}
+

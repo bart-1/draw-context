@@ -14,6 +14,19 @@ const colorsPaletteArr = [
   "black",
   "gray",
   "violet",
+  "brown",
+  "Crimson",
+  "DeepPink",
+  "DarkKhaki",
+  "DarkViolet",
+  "SlateBlue",
+  "Lime",
+  "Olive",
+  "LightSeaGreen",
+  "Cyan",
+  "Aquamarine",
+  "SkyBlue",
+  "DodgerBlue",
 ];
 
 const Palette = ({ handleColorOnClick }: PaletteProps) => {
@@ -21,11 +34,11 @@ const Palette = ({ handleColorOnClick }: PaletteProps) => {
     <button
       key={color}
       name={color}
-      style={{ backgroundColor: color, width: "30px", height: "30px" }}
+      style={{ backgroundColor: color, width: "40px", height: "40px" }}
       onClick={handleColorOnClick}></button>
   ));
 
-  return <div>{colorsPalette}</div>;
+  return <div className="palette">{colorsPalette}</div>;
 };
 
 export default Palette;
