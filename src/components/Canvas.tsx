@@ -1,9 +1,4 @@
-import React, {
-  FunctionComponent,
-  MouseEventHandler,
-  useEffect,
-  useRef,
-} from "react";
+import React, { MouseEventHandler, useEffect, useRef, useState } from "react";
 import "../styles/Canvas.css";
 
 type CanvasProps = {
@@ -11,14 +6,9 @@ type CanvasProps = {
   height: number;
   width: number;
   handleCanvasMouse: MouseEventHandler<HTMLCanvasElement>;
-}
+};
 
-const Canvas= ({
-  draw,
-  height,
-  width,
-  handleCanvasMouse,
-}:CanvasProps) => {
+const Canvas = ({ draw, height, width, handleCanvasMouse }: CanvasProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
