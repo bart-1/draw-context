@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from "react";
+import React, { MouseEventHandler, TouchEventHandler } from "react";
 
 interface PaletteProps {
   handleColorOnClick: MouseEventHandler<HTMLButtonElement>;
@@ -34,8 +34,9 @@ const Palette = ({ handleColorOnClick }: PaletteProps) => {
     <button
       key={color}
       name={color}
-      style={{ backgroundColor: color, width: "40px", height: "40px" }}
-      onClick={handleColorOnClick}></button>
+      style={{ backgroundColor: color, width: "40px", height: "40px", marginRight: "10px" }}
+      onClick={handleColorOnClick}
+    ></button>
   ));
 
   return <div className="palette">{colorsPalette}</div>;

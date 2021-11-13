@@ -19,7 +19,6 @@ const RangeInput = ({
   handleInput,
 }: RangeInput) => {
   return (
-    <div style={{ textAlign: "center" }}>
       <input
         name={name}
         type="range"
@@ -29,17 +28,7 @@ const RangeInput = ({
         value={value}
         step={step}
         onChange={handleInput}
-        style={{}}
       />
-      <input
-        type="number"
-        name={name}
-        step="1"
-        value={Math.round(value)}
-        onChange={handleInput}
-        style={{ width: "50px" }}
-      />
-    </div>
   );
 };
 

@@ -21,6 +21,7 @@ function App() {
     window.addEventListener("resize", reloadScreenSizeValue);
     return () => window.removeEventListener("resize", reloadScreenSizeValue);
 
+    
   }, []);
 
   return (

@@ -5,19 +5,23 @@ div.draw {
   margin: auto;
 }
 
-input[type=range][orient=vertical]{
+input[type="range"][orient="vertical"] {
+  position: sticky;
+  margin-right: -15px;
   writing-mode: bt-lr; /* IE */
-    -webkit-appearance: slider-vertical; /* WebKit */
-    width: 8px;
-    height: 175px;
-    padding: 0 5px;
-    transform: scale( 1, -1);
+  -webkit-appearance: slider-vertical; /* WebKit */
+  width: 8px;
+  height: 175px;
+  padding: 0 5px;
+  transform: scale(1, -1);
 }
 
-input[type=range][orient=horizontal]{
-    width: 175px;
-    height: 8px;
-    padding: 5px 0;
+input[type="range"][orient="horizontal"] {
+  margin: auto;
+  position: sticky;
+  width: 175px;
+  height: 8px;
+  padding: 5px 0;
 }
 
 div.horizontal-flex {
@@ -25,30 +29,64 @@ div.horizontal-flex {
   flex-direction: row;
 }
 
+div.number-input {
+  margin-top: 10px;
+  margin-bottom: -30px;
+}
+
+div.number-input > span {
+  color: white;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
 div.toolbox {
   width: 100vw;
-  border-radius: 15px 15px 0 0;
+  border-radius: 50px 50px 0 0;
   position: fixed;
   bottom: 0;
-  height: 20px;
-  background-color: indigo;
+  height: 5vh;
+  background-color: rgb(36, 36, 36);
+  transition: 1s;
 }
 
 div.toolbox:hover {
-  position: absolute;
-  height: fit-content;
+  height: 250px;
 }
 
-
-div.thickness {
-  margin: auto;
-  width: fit-content;
-  height: fit-content;
-  align-items: center;
+@media (max-width: 500px) {
+  div.toolbox:hover {
+    height: 350px;
+  }
 }
+
+div.toolbox-grip {
+  align-content: center;
+  color: white;
+  width: 100px;
+  height: 50px;
+  margin: -20px auto;
+  border-radius: 50%;
+  background-color: rgb(36, 36, 36);
+}
+
 div.palette {
   width: 80%;
   margin: 20px auto;
-  height: fit-content;
+}
+div.thickness {
+  margin: 0 auto 10px;
+  padding: 5px;
+  border-radius: 10px;
+  width: fit-content;
+  align-items: center;
+  background-color: white;
 }
 
+.active-tool {
+  /* border: 3px solid tomato; */
+  box-shadow: rgb(250, 49, 210) 0px 3px 6px, rgb(255, 0, 212) 0px 3px 6px;
+}

@@ -10,6 +10,10 @@ import Palette from "./Palette";
 import RangeInput from "./RangeInput";
 import "../styles/Draw.css";
 import LineThickness from "./LineThickness";
+import NumberInput from "./NumberInput";
+
+import { IconContext } from "react-icons";
+import { BsArrowBarUp } from "react-icons/bs";
 
 type DrawProps = {
   screenSizeValue: { x: number; y: number };
@@ -29,7 +33,6 @@ const Draw = ({ screenSizeValue }: DrawProps) => {
 
   const handleColorOnClick: MouseEventHandler<HTMLButtonElement> = (e) => {
     setColorOfTool(e.currentTarget.name);
-    console.log(e.currentTarget.name);
   };
 
   const handleInput: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -65,12 +68,27 @@ const Draw = ({ screenSizeValue }: DrawProps) => {
           />
         </div>
         <div className="horizontal-flex">
-          <Canvas
-            colorOfTool={colorOfTool}
-            thicknessOfTool={thicknessOfTool}
-            width={canvasSize.width}
-            height={canvasSize.height}
-          />
+          <div className="canvas-section">
+            <div className="number-input">
+              <NumberInput
+                name="width"
+                value={canvasSize.width}
+                handleInput={handleInput}
+              />
+              <span>{` x `}</span>
+              <NumberInput
+                name="height"
+                value={canvasSize.height}
+                handleInput={handleInput}
+              />
+            </div>
+            <Canvas
+              colorOfTool={colorOfTool}
+              thicknessOfTool={thicknessOfTool}
+              width={canvasSize.width}
+              height={canvasSize.height}
+            />
+          </div>
           <RangeInput
             name="height"
             min={200}
@@ -83,11 +101,17 @@ const Draw = ({ screenSizeValue }: DrawProps) => {
         </div>
       </div>
       <div className="toolbox">
+        <div className="toolbox-grip">
+          <IconContext.Provider value={{ size: "40px" }}>
+            <BsArrowBarUp />
+          </IconContext.Provider>
+        </div>
         <Palette handleColorOnClick={handleColorOnClick} />
         <div className="thickness">
           <LineThickness
             color={colorOfTool}
             handleThicknessOnClick={handleThicknessOnClick}
+            thicknessOfTool={thicknessOfTool}
           />
         </div>
       </div>

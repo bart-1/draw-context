@@ -1,8 +1,12 @@
-canvas {
-    border: 2px solid gray;
-    background-color: white;
-    min-width: 200px;
-    min-height: 200px;
-    margin: auto;
+div.canvas {
+  padding: 40px 0 10px;
+  background: rgb(36, 36, 36);
 }
 
+canvas {
+  border: 2px solid gray;
+  background-color: white;
+  min-width: 200px;
+  min-height: 200px;
+  margin: auto;
+}
