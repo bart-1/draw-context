@@ -6,11 +6,9 @@ import React, {
 } from "react";
 
 import Canvas from "./Canvas";
-import Palette from "./Palette";
-import RangeInput from "./RangeInput";
+import { ThicknessPalette, ColorPalette } from "./Palettes";
+import { NumberInput, RangeInput } from "./Inputs";
 import "../styles/Draw.css";
-import LineThickness from "./LineThickness";
-import NumberInput from "./NumberInput";
 
 import { IconContext } from "react-icons";
 import { BsArrowBarUp } from "react-icons/bs";
@@ -24,6 +22,7 @@ const Draw = ({ screenSizeValue }: DrawProps) => {
     width: screenSizeValue.x,
     height: screenSizeValue.y,
   });
+  const [clearFlag, setClearFlag] = useState(false);
   const [colorOfTool, setColorOfTool] = useState("black");
   const [thicknessOfTool, setThicknessOfTool] = useState(5);
 
@@ -70,19 +69,30 @@ const Draw = ({ screenSizeValue }: DrawProps) => {
         <div className="horizontal-flex">
           <div className="canvas-section">
             <div className="number-input">
-              <NumberInput
-                name="width"
-                value={canvasSize.width}
-                handleInput={handleInput}
-              />
-              <span>{` x `}</span>
-              <NumberInput
-                name="height"
-                value={canvasSize.height}
-                handleInput={handleInput}
-              />
+              <div></div>
+              <div>
+                <NumberInput
+                  name="width"
+                  value={canvasSize.width}
+                  handleInput={handleInput}
+                />
+                <span>{` x `}</span>
+                <NumberInput
+                  name="height"
+                  value={canvasSize.height}
+                  handleInput={handleInput}
+                />
+              </div>
+              <div>
+                <button
+                  className="clear-button"
+                  onClick={() => setClearFlag((prevState) => !prevState)}>
+                  Clear
+                </button>
+              </div>
             </div>
             <Canvas
+              clearFlag={clearFlag}
               colorOfTool={colorOfTool}
               thicknessOfTool={thicknessOfTool}
               width={canvasSize.width}
@@ -106,9 +116,9 @@ const Draw = ({ screenSizeValue }: DrawProps) => {
             <BsArrowBarUp />
           </IconContext.Provider>
         </div>
-        <Palette handleColorOnClick={handleColorOnClick} />
+        <ColorPalette handleColorOnClick={handleColorOnClick} />
         <div className="thickness">
-          <LineThickness
+          <ThicknessPalette
             color={colorOfTool}
             handleThicknessOnClick={handleThicknessOnClick}
             thicknessOfTool={thicknessOfTool}

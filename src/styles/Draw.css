@@ -30,12 +30,33 @@ div.horizontal-flex {
 }
 
 div.number-input {
+  padding: 0 10px;
+  display: flex;
+  flex-flow: wrap;
+  flex-direction: row;
   margin-top: 10px;
   margin-bottom: -30px;
+  justify-content: space-between;
+}
+div.number-input > div:first-child {
+  flex: 0 0 10%;
 }
 
-div.number-input > span {
+div.number-input > div:last-child {
+  flex: 0 0 10%;
+  text-align: right;
+}
+
+div.number-input > div :nth-child(2) {
+  flex: 1 1 auto;
+}
+
+div.number-input > div > span {
   color: white;
+}
+
+div.number-input > button {
+  justify-self: right;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -60,6 +81,15 @@ div.toolbox:hover {
 @media (max-width: 500px) {
   div.toolbox:hover {
     height: 350px;
+  }
+}
+@media (max-width: 290px) {
+  div.number-input {
+    margin-bottom: -60px;
+    justify-content: center;
+  }
+  div.number-input > div:last-child {
+    margin-top: 5px;
   }
 }
 

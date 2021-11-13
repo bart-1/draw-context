@@ -1,14 +1,8 @@
-import React, {
-  MouseEventHandler,
-  ReactEventHandler,
-  TouchEventHandler,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { MouseEventHandler, useEffect, useRef, useState } from "react";
 import "../styles/Canvas.css";
 
 type CanvasProps = {
+  clearFlag: boolean;
   colorOfTool: string;
   height: number;
   thicknessOfTool: number;
@@ -16,6 +10,7 @@ type CanvasProps = {
 };
 
 const Canvas = ({
+  clearFlag,
   colorOfTool,
   height,
   thicknessOfTool,
@@ -51,6 +46,11 @@ const Canvas = ({
       ctx.stroke();
     }
   };
+  useEffect(() => {
+    window.addEventListener("touchstart", handleTouch);
+    window.addEventListener("touchmove", handleTouch);
+    window.addEventListener("touchend", handleTouch);
+  }, []);
 
   useEffect(() => {
     if (canvasRef.current !== null) {
@@ -60,10 +60,11 @@ const Canvas = ({
   }, [draw]);
 
   useEffect(() => {
-    window.addEventListener("touchstart", handleTouch);
-    window.addEventListener("touchmove", handleTouch);
-    window.addEventListener("touchend", handleTouch);
-  }, []);
+    if (canvasRef.current) {
+      const canvas = canvasRef.current.getContext("2d");
+      canvas?.clearRect(0, 0, width, height);
+    }
+  }, [clearFlag]);
 
   const handleTouch = (e: TouchEvent) => {
     if (e.type === "touchstart") {
@@ -72,18 +73,17 @@ const Canvas = ({
         y: e.changedTouches[0].clientY,
       });
     }
-    
+
     if (e.type === "touchend") {
       setDrawOn(false);
       setMouseStartCoordinates({ x: 0, y: 0 });
     }
-    
-    if (e.type === "touchmove")
-    setDrawOn(true);
-      setMouseMoveCoordinates({
-        x: e.changedTouches[0].clientX,
-        y: e.changedTouches[0].clientY,
-      });
+
+    if (e.type === "touchmove") setDrawOn(true);
+    setMouseMoveCoordinates({
+      x: e.changedTouches[0].clientX,
+      y: e.changedTouches[0].clientY,
+    });
   };
 
   const handleCanvasMouse: MouseEventHandler<HTMLCanvasElement> = (e) => {
