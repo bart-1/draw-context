@@ -1,6 +1,8 @@
 import React, { MouseEventHandler, useEffect, useRef, useState } from "react";
 import "../styles/Canvas.css";
 
+import useCanvas from "../hooks/useCanvas";
+
 type CanvasProps = {
   clearFlag: boolean;
   colorOfTool: string;
@@ -16,7 +18,7 @@ const Canvas = ({
   thicknessOfTool,
   width,
 }: CanvasProps) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  // const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const [drawOn, setDrawOn] = useState(false);
   const [mouseStartCoordinates, setMouseStartCoordinates] = useState({
@@ -46,18 +48,20 @@ const Canvas = ({
       ctx.stroke();
     }
   };
+  const canvasRef = useCanvas(draw);
+
   useEffect(() => {
     window.addEventListener("touchstart", handleTouch);
     window.addEventListener("touchmove", handleTouch);
     window.addEventListener("touchend", handleTouch);
   }, []);
 
-  useEffect(() => {
-    if (canvasRef.current !== null) {
-      const canvas = canvasRef.current.getContext("2d");
-      if (canvas) draw(canvas);
-    }
-  }, [draw]);
+  // useEffect(() => {
+  //   if (canvasRef.current !== null) {
+  //     const canvas = canvasRef.current.getContext("2d");
+  //     if (canvas) draw(canvas);
+  //   }
+  // }, [draw]);
 
   useEffect(() => {
     if (canvasRef.current) {
