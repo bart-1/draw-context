@@ -1,0 +1,15 @@
+div.palette {
+  width: 80%;
+  margin: 20px auto;
+}
+div.thickness {
+  margin: 5px auto 10px;
+  border-radius: 10px;
+  width: fit-content;
+  align-items: center;
+}
+
+.active-tool {
+  /* border: 3px solid tomato; */
+  box-shadow: rgb(250, 49, 210) 0px 3px 6px, rgb(255, 0, 212) 0px 3px 6px;
+}

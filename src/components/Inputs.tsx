@@ -1,4 +1,5 @@
-import React, { ChangeEventHandler, PropsWithChildren, PropsWithoutRef } from "react";
+import { ChangeEventHandler } from "react";
+import "../styles/Inputs.css";
 
 interface RangeInput {
   name: string;
@@ -20,16 +21,16 @@ export const RangeInput = ({
   handleInput,
 }: RangeInput) => {
   return (
-      <input
-        name={name}
-        type="range"
-        min={min}
-        max={max}
-        orient={orient}
-        value={value}
-        step={step}
-        onChange={handleInput}
-      />
+    <input
+      name={name}
+      type="range"
+      min={min}
+      max={max}
+      date-orient={orient}
+      value={value}
+      step={step}
+      onChange={handleInput}
+    />
   );
 };
 

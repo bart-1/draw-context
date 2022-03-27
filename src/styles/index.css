@@ -2,7 +2,9 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: burlywood;
+  background-size: 8.00px 8.00px;
+    background-image: linear-gradient(90deg, #c9ccc8 25%, #b5b091 25%, #b5b091 50%, #c9ccc8 50%, #c9ccc8 75%, #b5b091 75%, #b5b091 100%);
+
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;

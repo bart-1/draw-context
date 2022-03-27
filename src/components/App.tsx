@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Draw from "./Draw";
+import Draw from "./Pulpit";
 import "../styles/App.css";
 
 const screenFactor = 0.85;

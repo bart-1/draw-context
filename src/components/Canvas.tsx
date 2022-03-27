@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, useEffect, useRef, useState } from "react";
+import React, { MouseEventHandler, useEffect, useState } from "react";
 import "../styles/Canvas.css";
 
 import useCanvas from "../hooks/useCanvas";
@@ -9,6 +9,7 @@ type CanvasProps = {
   height: number;
   thicknessOfTool: number;
   width: number;
+  drawOnFlag: CallableFunction;
 };
 
 const Canvas = ({
@@ -17,9 +18,8 @@ const Canvas = ({
   height,
   thicknessOfTool,
   width,
+  drawOnFlag,
 }: CanvasProps) => {
-  // const canvasRef = useRef<HTMLCanvasElement>(null);
-
   const [drawOn, setDrawOn] = useState(false);
   const [mouseStartCoordinates, setMouseStartCoordinates] = useState({
     x: 0,
@@ -56,12 +56,9 @@ const Canvas = ({
     window.addEventListener("touchend", handleTouch);
   }, []);
 
-  // useEffect(() => {
-  //   if (canvasRef.current !== null) {
-  //     const canvas = canvasRef.current.getContext("2d");
-  //     if (canvas) draw(canvas);
-  //   }
-  // }, [draw]);
+  useEffect(() => {
+    drawOnFlag();
+  }, [drawOn]);
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -106,15 +103,13 @@ const Canvas = ({
   };
 
   return (
-    <div className="canvas">
-      <canvas
-        ref={canvasRef}
-        width={width}
-        height={height}
-        onMouseDown={handleCanvasMouse}
-        onMouseMove={handleCanvasMouse}
-        onMouseUp={handleCanvasMouse}></canvas>
-    </div>
+    <canvas
+      ref={canvasRef}
+      width={width}
+      height={height}
+      onMouseDown={handleCanvasMouse}
+      onMouseMove={handleCanvasMouse}
+      onMouseUp={handleCanvasMouse}></canvas>
   );
 };
 

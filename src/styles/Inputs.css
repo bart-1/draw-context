@@ -1,0 +1,24 @@
+input[type="range"][orient="horizontal"] {
+  margin: 0.5vh auto 1vh;
+  position: sticky;
+  width: 175px;
+  height: 8px;
+  padding: 5px 0;
+  box-shadow: rgba(0, 0, 0, 0.4) 4px 5px;
+}
+input[type="range"][orient="vertical"] {
+  position: sticky;
+  margin-left: 10px;
+  writing-mode: bt-lr; /* IE */
+  -webkit-appearance: slider-vertical; /* WebKit */
+  width: 8px;
+  height: 175px;
+  padding: 0 5px;
+  transform: scale(1, -1);
+  box-shadow: rgba(0, 0, 0, 0.4) 5px -2px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 1;
+}
